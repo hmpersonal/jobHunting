@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>入力フォーム</title>
+</head>
+<body>
+    <form method="post" action="{% url 'send_receive_request' %}">
+        {% csrf_token%}
+        <label for="input_text">画像ファイルのパスを入力してください。:</label>
+        <input type="text" name="input_text" id="input_text" required>
+        <button type="submit">送信</button>
+    </form>
+    
+    {% if message %}
+        <table><tr><td><p>処理結果-></p></td><td><p>{{ message }}</p></td></tr></table>
+    {% endif %}
+</body>
+</html>
